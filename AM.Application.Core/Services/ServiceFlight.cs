@@ -111,7 +111,10 @@ namespace AM.Application.Core.Services
             }
             return dates;
         }*/
-
+        public double DurationAverage(string destination)
+        {
+            return Flights.where(f.Destination.Equals(destination)).Average(f=>f.Duration);
+        }
 
 
     }
