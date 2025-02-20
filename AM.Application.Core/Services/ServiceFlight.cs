@@ -115,6 +115,14 @@ namespace AM.Application.Core.Services
         {
             return Flights.where(f.Destination.Equals(destination)).Average(f=>f.Duration);
         }
+        public void OrderedDurationFlights()
+        {
+            var  query1=from Flight in Flights
+                        orderby Flight.Duration descending
+                        select Flight;
+            var query2=Flights.OrderByDescending(f=>f.Duration);
+            return query1;
+        }
 
 
     }
