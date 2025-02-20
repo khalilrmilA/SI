@@ -123,6 +123,15 @@ namespace AM.Application.Core.Services
             var query2=Flights.OrderByDescending(f=>f.Duration);
             return query1;
         }
+        public IEmureable<Traveller> SeniorTravellers(Flight f)
+        {
+            var req = from p in f.Travellers.OfType<Traveller>()
+            orderby p.birthDate
+            select p;
+            var req2 =f.Passengers.OfType<Traveller>().OrderBy(p=>p.birthDate);
+                      return req.take(3);
+        }
+
 
 
     }
